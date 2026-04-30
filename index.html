@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6 Horas de Goiânia | Passaglia Slot Racing</title>
+
+  <style>
+    :root {
+      --green: #008c45;
+      --white: #f4f5f0;
+      --red: #cd212a;
+      --black: #070707;
+      --dark: #151515;
+      --gray: #a0a0a0;
+      --orange: #ff5a00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    .top-line {
+      height: 6px;
+      background: linear-gradient(90deg, var(--green) 0 33%, var(--white) 33% 66%, var(--red) 66% 100%);
+    }
+
+    header {
+      position: fixed;
+      top: 6px;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    header img {
+      height: 46px;
+      object-fit: contain;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .lang-switch span {
+      cursor: pointer;
+      color: var(--gray);
+    }
+
+    .lang-switch span.active {
+      color: var(--white);
+      border-bottom: 2px solid var(--red);
+    }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.9), rgba(0,0,0,0.35)),
+        url("./img/group.jpg") center / cover no-repeat;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding: 140px 60px 70px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      background: var(--red);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transform: skew(-12deg);
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 110px);
+      line-height: 0.88;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .subtitle {
+      margin-top: 28px;
+      max-width: 620px;
+      font-size: 22px;
+      line-height: 1.45;
+      color: #ddd;
+    }
+
+    .hero-side {
+      position: relative;
+      z-index: 2;
+      align-self: end;
+    }
+
+    .date-card {
+      border-left: 8px solid var(--green);
+      background: rgba(255,255,255,0.08);
+      padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+
+    .date-card small {
+      display: block;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .date-card strong {
+      font-size: 32px;
+      color: white;
+    }
+
+    .countdown {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .count-box {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 18px 10px;
+      text-align: center;
+    }
+
+    .count-box span {
+      display: block;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+
+    .count-box label {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 90px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .section-label {
+      color: var(--red);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 68px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    .text-block p {
+      font-size: 20px;
+      line-height: 1.65;
+      color: #d5d5d5;
+      margin-bottom: 22px;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .spec-card {
+      background: #111;
+      border-top: 4px solid var(--green);
+      padding: 24px;
+      min-height: 150px;
+    }
+
+    .spec-card:nth-child(2) {
+      border-top-color: var(--white);
+    }
+
+    .spec-card:nth-child(3) {
+      border-top-color: var(--red);
+    }
+
+    .spec-card h3 {
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .spec-card p {
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 50px 30px;
+      background: #080808;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 42px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .footer-logos img {
+      max-height: 48px;
+      max-width: 230px;
+      object-fit: contain;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 14px 20px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 130px 24px 60px;
+        gap: 50px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 70px 24px;
+      }
+
+      .editorial-grid,
+      .specs {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .social a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .social a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--red);
+    transition: 0.3s;
+  }
+
+  .social a:hover::after {
+    width: 100%;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="top-line"></div>
+
+  <header>
+    <img src="./img/passaglia.jpg" alt="Passaglia Slot Racing" />
+    <div class="lang-switch">
+      <span class="active" data-lang="pt">PT</span>
+      <span data-lang="en">EN</span>
+      <span data-lang="es">ES</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <div class="tag" data-i18n="tag">Endurance Slot Racing</div>
+        <h1 data-i18n="title">6 Horas de Goiânia</h1>
+        <p class="subtitle" data-i18n="subtitle">
+          Uma prova de endurance para Hypercars Scaleauto em escala 1:32, disputada em pista Scaleauto Pro-Track System com sistema digital Oxigen.
+        </p>
+      </div>
+
+      <div class="hero-side reveal">
+        <div class="date-card">
+          <small data-i18n="dateLabel">Data do evento</small>
+          <strong>09 Maio 2026</strong>
+
+          <div class="countdown">
+            <div class="count-box"><span id="days">--</span><label data-i18n="days">Dias</label></div>
+            <div class="count-box"><span id="hours">--</span><label data-i18n="hours">Horas</label></div>
+            <div class="count-box"><span id="minutes">--</span><label data-i18n="minutes">Min</label></div>
+            <div class="count-box"><span id="seconds">--</span><label data-i18n="seconds">Seg</label></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="editorial-grid">
+        <div>
+          <div class="section-label" data-i18n="eventLabel">O Evento</div>
+          <h2 data-i18n="eventTitle">Resistência, estratégia e precisão.</h2>
+        </div>
+
+        <div class="text-block">
+          <p data-i18n="eventText1">
+            A Passaglia Slot Racing apresenta a 6 Horas de Goiânia, uma corrida de longa duração dedicada aos modelos Hypercars em escala 1:32.
+          </p>
+          <p data-i18n="eventText2">
+            O formato endurance valoriza ritmo constante, gestão de equipe, concentração e leitura estratégica da corrida do início ao fim.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-label" data-i18n="techLabel">Pacote técnico</div>
+      <h2 data-i18n="techTitle">Tecnologia de pista e competição digital.</h2>
+
+      <div class="specs">
+        <div class="spec-card">
+          <h3>Scaleauto Hypercars</h3>
+          <p data-i18n="spec1">Modelos em escala 1:32 inspirados na nova geração dos protótipos de endurance.</p>
+        </div>
+
+        <div class="spec-card">
+          <h3>Pro-Track System</h3>
+          <p data-i18n="spec2">Pista Scaleauto projetada para provas técnicas, ritmo constante e disputas de longa duração.</p>
+        </div>
+
+        <div class="spec-card">
+          <h3>Oxigen Digital</h3>
+          <p data-i18n="spec3">Sistema digital Slot.it Oxigen, permitindo controle avançado, troca de faixa e estratégia em pista.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logos">
+      <img src="./img/Scaleauto.png" alt="Scaleauto" />
+      <img src="./img/ProTrackSystem.png" alt="Pro Track System" />
+      <img src="./img/oxigen.jpg" alt="Oxigen Slot.it Digital" />
+    </div>
+
+    <div class="social">
+  <a href="https://www.instagram.com/passaglia_slot_racing/" target="_blank">
+    Instagram
+  </a>
+  <a href="https://www.youtube.com/channel/UCLu7gEJtRzbz1TKN5zSpeTg/videos" target="_blank">
+    YouTube
+  </a>
+</div>
+
+    <p>© 2026 Passaglia Slot Racing</p>
+  </footer>
+
+  <script>
+    const eventDate = new Date("2026-05-09T00:00:00-03:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = String(days).padStart(2, "0");
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const translations = {
+      pt: {
+        tag: "Endurance Slot Racing",
+        title: "6 Horas de Goiânia",
+        subtitle: "Uma prova de endurance para Hypercars Scaleauto em escala 1:32, disputada em pista Scaleauto Pro-Track System com sistema digital Oxigen.",
+        dateLabel: "Data do evento",
+        days: "Dias",
+        hours: "Horas",
+        minutes: "Min",
+        seconds: "Seg",
+        eventLabel: "O Evento",
+        eventTitle: "Resistência, estratégia e precisão.",
+        eventText1: "A Passaglia Slot Racing apresenta a 6 Horas de Goiânia, uma corrida de longa duração dedicada aos modelos Hypercars em escala 1:32.",
+        eventText2: "O formato endurance valoriza ritmo constante, gestão de equipe, concentração e leitura estratégica da corrida do início ao fim.",
+        techLabel: "Pacote técnico",
+        techTitle: "Tecnologia de pista e competição digital.",
+        spec1: "Modelos em escala 1:32 inspirados na nova geração dos protótipos de endurance.",
+        spec2: "Pista Scaleauto projetada para provas técnicas, ritmo constante e disputas de longa duração.",
+        spec3: "Sistema digital Slot.it Oxigen, permitindo controle avançado, troca de faixa e estratégia em pista."
+      },
+      en: {
+        tag: "Endurance Slot Racing",
+        title: "6 Hours of Goiânia",
+        subtitle: "An endurance race for 1:32 Scaleauto Hypercars, running on a Scaleauto Pro-Track System circuit with Oxigen digital control.",
+        dateLabel: "Event date",
+        days: "Days",
+        hours: "Hours",
+        minutes: "Min",
+        seconds: "Sec",
+        eventLabel: "The Event",
+        eventTitle: "Endurance, strategy and precision.",
+        eventText1: "Passaglia Slot Racing presents the 6 Hours of Goiânia, a long-distance slot racing event dedicated to 1:32 Hypercars.",
+        eventText2: "The endurance format rewards consistent pace, team management, focus and strategic race reading from start to finish.",
+        techLabel: "Technical package",
+        techTitle: "Track technology and digital racing.",
+        spec1: "1:32 scale models inspired by the new generation of endurance prototypes.",
+        spec2: "Scaleauto track system designed for technical racing, consistent rhythm and long-distance competition.",
+        spec3: "Slot.it Oxigen digital system, enabling advanced control, lane changing and race strategy."
+      },
+      es: {
+        tag: "Endurance Slot Racing",
+        title: "6 Horas de Goiânia",
+        subtitle: "Una prueba de resistencia para Hypercars Scaleauto en escala 1:32, disputada en pista Scaleauto Pro-Track System con sistema digital Oxigen.",
+        dateLabel: "Fecha del evento",
+        days: "Días",
+        hours: "Horas",
+        minutes: "Min",
+        seconds: "Seg",
+        eventLabel: "El Evento",
+        eventTitle: "Resistencia, estrategia y precisión.",
+        eventText1: "Passaglia Slot Racing presenta las 6 Horas de Goiânia, una carrera de larga duración dedicada a los Hypercars en escala 1:32.",
+        eventText2: "El formato endurance valora ritmo constante, gestión de equipo, concentración y lectura estratégica de la carrera de principio a fin.",
+        techLabel: "Paquete técnico",
+        techTitle: "Tecnología de pista y competición digital.",
+        spec1: "Modelos en escala 1:32 inspirados en la nueva generación de prototipos de resistencia.",
+        spec2: "Pista Scaleauto diseñada para carreras técnicas, ritmo constante y competiciones de larga duración.",
+        spec3: "Sistema digital Slot.it Oxigen, que permite control avanzado, cambio de carril y estrategia en pista."
+      }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.dataset.i18n;
+        el.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll(".lang-switch span").forEach((el) => {
+        el.classList.toggle("active", el.dataset.lang === lang);
+      });
+
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+    }
+
+    document.querySelectorAll(".lang-switch span").forEach((el) => {
+      el.addEventListener("click", () => setLanguage(el.dataset.lang));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
