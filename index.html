@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="6 Horas de Goiânia" />
+  <meta property="og:description" content="Endurance Slot Racing • 09 Maio 2026" />
+  <meta property="og:image" content="https://passaglia-go6.pages.dev/og-go6.jpg" />
+  <meta property="og:url" content="https://passaglia-go6.pages.dev/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>6 Horas de Goiânia | Passaglia Slot Racing</title>
+  <meta name="description" content="Endurance de Slot Cars Hypercars 1:32. 09 Maio 2026. Pista Scaleauto Pro-Track com sistema Oxigen." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://passaglia-go6.pages.dev/" />
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#000000">
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GO6">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
 
   <style>
     :root {
@@ -580,5 +597,13 @@
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js");
+      });
+    }
+  </script>  
 </body>
 </html>
