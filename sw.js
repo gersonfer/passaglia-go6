@@ -1,4 +1,5 @@
 const CACHE = "go6-v1";
+
 const ASSETS = [
   "/",
   "/index.html",
@@ -15,20 +16,29 @@ const ASSETS = [
   "/img/oxigen.jpg"
 ];
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+// instala e faz cache
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(ASSETS))
+  );
 });
 
-self.addEventListener("activate", (e) => {
-  e.waitUntil(
+// limpa cache antigo
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.map((k) => (k !== CACHE ? caches.delete(k) : null)))
+      Promise.all(
+        keys.map((key) => (key !== CACHE ? caches.delete(key) : null))
+      )
     )
   );
 });
 
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((r) => r || fetch(e.request))
+// responde com cache primeiro
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
   );
 });
