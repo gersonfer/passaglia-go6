@@ -428,7 +428,7 @@
       <div class="hero-side reveal">
         <div class="date-card">
           <small data-i18n="dateLabel">Data do evento</small>
-          <strong>09 Maio 2026</strong>
+          <strong id="event-date"></strong>
 
           <div class="countdown">
             <div class="count-box"><span id="days">--</span><label data-i18n="days">Dias</label></div>
@@ -502,6 +502,24 @@
 
   <script>
     const eventDate = new Date("2026-05-09T00:00:00-03:00").getTime();
+
+    function updateEventDate(lang) {
+      const date = new Date("2026-05-09T00:00:00-03:00");
+
+      const localeMap = {
+        pt: "pt-BR",
+        en: "en-US",
+        es: "es-ES"
+      };
+
+      const formatted = date.toLocaleDateString(localeMap[lang], {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+
+      document.getElementById("event-date").textContent = formatted;
+    }
 
     function updateCountdown() {
       const now = Date.now();
@@ -600,6 +618,8 @@
       });
 
       document.documentElement.lang = lang === "pt" ? "pt-BR" : lang;
+
+      updateEventDate(lang);
     }
 
     document.querySelectorAll(".lang-switch span").forEach((el) => {
@@ -616,6 +636,8 @@
     }, { threshold: 0.18 });
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    setLanguage("pt");
   </script>
 
   <script>
