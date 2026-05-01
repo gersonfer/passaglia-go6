@@ -400,6 +400,63 @@
   .social a:hover::after {
     width: 100%;
   }
+
+  .teams-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .team-group {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .group-title {
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-left: 6px solid var(--green);
+      padding-left: 12px;
+    }
+
+    .team-card {
+      background: #111;
+      border-left: 4px solid var(--red);
+      padding: 18px;
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--orange);
+    }
+
+    .team-card h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .team-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .team-card li {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .teams-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -479,6 +536,100 @@
         </div>
       </div>
     </section>
+
+    <section class="reveal">
+      <div class="section-label">Equipes</div>
+      <h2>Grid de largada</h2>
+
+      <div class="teams-grid">
+
+        <!-- GRUPO A -->
+        <div class="team-group">
+          <h3 class="group-title">Grupo A</h3>
+
+          <div class="team-card">
+            <h4>Fast Cat 🐈‍⬛</h4>
+            <ul>
+              <li>Benigno</li>
+              <li>Renato Frangão</li>
+              <li>Taddei</li>
+              <li>Serjão</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>Blue Racing</h4>
+            <ul>
+              <li>Andre PX</li>
+              <li>Arthur Passaglia</li>
+              <li>Ricardo C.</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>JG VitorAnd</h4>
+            <ul>
+              <li>Andre Passaglia</li>
+              <li>Marco Siqueira</li>
+              <li>Vitor</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>Power Slot</h4>
+            <ul>
+              <li>Chiquinho</li>
+              <li>Fabim</li>
+              <li>Netto</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- GRUPO B -->
+        <div class="team-group">
+          <h3 class="group-title">Grupo B</h3>
+
+          <div class="team-card">
+            <h4>Equipe TBD</h4>
+            <ul>
+              <li>Cleber</li>
+              <li>Curado</li>
+              <li>Pedro (O Tio)</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>Bsb Digital</h4>
+            <ul>
+              <li>Leonardo</li>
+              <li>Rafael</li>
+              <li>Reginaldo</li>
+              <li>Sandro Japa</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>Monster Slot</h4>
+            <ul>
+              <li>Herick</li>
+              <li>Rafael</li>
+              <li>Wascheck</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <h4>Zap X</h4>
+            <ul>
+              <li>Emerson</li>
+              <li>Fabrício</li>
+              <li>Wilton</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer>
