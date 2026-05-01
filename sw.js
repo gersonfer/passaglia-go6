@@ -3,7 +3,7 @@ const CACHE = "go6-v3";
 const ASSETS = [
   "/",
   "/index.html",
-  "/og-go6.jpg",
+  "/og-go6-start.png",
   "/favicon.ico",
   "/favicon-32.png",
   "/favicon-16.png",
