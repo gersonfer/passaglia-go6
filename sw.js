@@ -1,4 +1,4 @@
-const CACHE = "go6-v2";
+const CACHE = "go6-v3";
 
 const ASSETS = [
   "/",
