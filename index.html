@@ -81,13 +81,34 @@
       left: 0;
       width: 100%;
       z-index: 20;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 18px 40px;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(10px);
+
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.65)
+      );
       border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Aplica blur somente onde é suportado */
+    @supports (backdrop-filter: blur(10px)) {
+      header {
+        backdrop-filter: blur(10px);
+      }
+    }
+
+    /* Safari (ainda necessário em alguns casos) */
+    @supports (-webkit-backdrop-filter: blur(10px)) {
+      header {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
     }
 
     .logo {
@@ -310,18 +331,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 42px;
+      gap: 40px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
     }
 
     .footer-logos img {
-      max-height: 48px;
-      max-width: 230px;
+      height: 42px;
+      width: auto;
       object-fit: contain;
-      background: white;
-      padding: 8px 12px;
-      border-radius: 4px;
     }
 
     footer p {
@@ -347,7 +364,7 @@
 
       .hero {
         grid-template-columns: 1fr;
-        padding: 130px 24px 60px;
+        padding: 140px 60px 70px;
         gap: 50px;
       }
 
@@ -544,14 +561,14 @@
     </section>
 
     <section class="reveal">
-      <div class="section-label">Equipes</div>
-      <h2>Grid de largada</h2>
+      <div class="section-label" data-i18n="teamsLabel">Equipes</div>
+      <h2 data-i18n="teamsTitle">Grid de largada</h2>
 
       <div class="teams-grid">
 
         <!-- GRUPO A -->
         <div class="team-group">
-          <h3 class="group-title">Grupo A</h3>
+          <h3 class="group-title" data-i18n="groupA">Grupo A</h3>
 
           <div class="team-card">
             <h4>Fast Cat 🐈‍⬛</h4>
@@ -593,7 +610,7 @@
 
         <!-- GRUPO B -->
         <div class="team-group">
-          <h3 class="group-title">Grupo B</h3>
+          <h3 class="group-title" data-i18n="groupB">Grupo B</h3>
 
           <div class="team-card">
             <h4>Equipe TBD</h4>
@@ -722,7 +739,11 @@
         techTitle: "Tecnologia de pista e competição digital.",
         spec1: "Modelos em escala 1:32 inspirados na nova geração dos protótipos de endurance.",
         spec2: "Pista Scaleauto projetada para provas técnicas, ritmo constante e disputas de longa duração.",
-        spec3: "Sistema digital Slot.it Oxigen, permitindo controle avançado, troca de faixa e estratégia em pista."
+        spec3: "Sistema digital Slot.it Oxigen, permitindo controle avançado, troca de faixa e estratégia em pista.",
+        teamsLabel: "Equipes",
+        teamsTitle: "Grid de largada",
+        groupA: "Grupo A",
+        groupB: "Grupo B"
       },
       en: {
         tag: "Endurance Slot Racing",
@@ -741,7 +762,11 @@
         techTitle: "Track technology and digital racing.",
         spec1: "1:32 scale models inspired by the new generation of endurance prototypes.",
         spec2: "Scaleauto track system designed for technical racing, consistent rhythm and long-distance competition.",
-        spec3: "Slot.it Oxigen digital system, enabling advanced control, lane changing and race strategy."
+        spec3: "Slot.it Oxigen digital system, enabling advanced control, lane changing and race strategy.",
+        teamsLabel: "Teams",
+        teamsTitle: "Starting grid",
+        groupA: "Group A",
+        groupB: "Group B"
       },
       es: {
         tag: "Endurance Slot Racing",
@@ -760,7 +785,11 @@
         techTitle: "Tecnología de pista y competición digital.",
         spec1: "Modelos en escala 1:32 inspirados en la nueva generación de prototipos de resistencia.",
         spec2: "Pista Scaleauto diseñada para carreras técnicas, ritmo constante y competiciones de larga duración.",
-        spec3: "Sistema digital Slot.it Oxigen, que permite control avanzado, cambio de carril y estrategia en pista."
+        spec3: "Sistema digital Slot.it Oxigen, que permite control avanzado, cambio de carril y estrategia en pista.",
+        teamsLabel: "Equipos",
+        teamsTitle: "Parrilla de salida",
+        groupA: "Grupo A",
+        groupB: "Grupo B"
       }
     };
 
