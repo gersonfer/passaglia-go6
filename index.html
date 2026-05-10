@@ -478,6 +478,112 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 50px;
+    }
+
+    .result-card {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.06),
+          rgba(255,255,255,0.02)
+        );
+
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 6px solid #444;
+
+      padding: 28px;
+
+      transition: 0.3s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .result-card.gold {
+      border-top-color: #ffd700;
+    }
+
+    .result-card.silver {
+      border-top-color: #c0c0c0;
+    }
+
+    .result-card.bronze {
+      border-top-color: #cd7f32;
+    }
+
+    .result-position {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+
+    .result-team {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .result-laps {
+      font-size: 68px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .result-laps-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 6px;
+      margin-bottom: 22px;
+    }
+
+    .result-drivers {
+      list-style: none;
+      padding: 0;
+    }
+
+    .result-drivers li {
+      color: #d8d8d8;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .results-note {
+      margin-top: 40px;
+      color: var(--gray);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-team {
+        font-size: 28px;
+      }
+
+      .result-laps {
+        font-size: 54px;
+      }
+    }  
   </style>
 </head>
 
@@ -561,96 +667,99 @@
     </section>
 
     <section class="reveal">
-      <div class="section-label" data-i18n="teamsLabel">Equipes</div>
-      <h2 data-i18n="teamsTitle">Grid de largada</h2>
 
-      <div class="teams-grid">
+      <div class="section-label">
+        Resultados Oficiais
+      </div>
 
-        <!-- GRUPO A -->
-        <div class="team-group">
-          <h3 class="group-title" data-i18n="groupA">Grupo A</h3>
+      <h2>
+        Pódio Final
+      </h2>
 
-          <div class="team-card">
-            <h4>Fast Cat 🐈‍⬛</h4>
-            <ul>
-              <li>Benigno</li>
-              <li>Renato Frangão</li>
-              <li>Taddei</li>
-              <li>Serjão</li>
-            </ul>
+      <div class="results-grid">
+
+        <!-- 1 -->
+        <div class="result-card gold">
+          <div class="result-position">
+            🥇 Campeão
           </div>
 
-          <div class="team-card">
-            <h4>Blue Racing</h4>
-            <ul>
-              <li>Andre PX</li>
-              <li>Arthur Passaglia</li>
-              <li>Ricardo C.</li>
-            </ul>
+          <div class="result-team">
+            Trinidad
           </div>
 
-          <div class="team-card">
-            <h4>JG VitorAnd</h4>
-            <ul>
-              <li>Andre Passaglia</li>
-              <li>Marco Siqueira</li>
-              <li>Vitor</li>
-            </ul>
+          <div class="result-laps">
+            1448
           </div>
 
-          <div class="team-card">
-            <h4>Power Slot</h4>
-            <ul>
-              <li>Chiquinho</li>
-              <li>Fabim</li>
-              <li>Netto</li>
-            </ul>
+          <div class="result-laps-label">
+            Voltas Completadas
           </div>
+
+          <ul class="result-drivers">
+            <li>Cleber Veio</li>
+            <li>F. Curado</li>
+            <li>Tio Chico</li>
+          </ul>
         </div>
 
-        <!-- GRUPO B -->
-        <div class="team-group">
-          <h3 class="group-title" data-i18n="groupB">Grupo B</h3>
-
-          <div class="team-card">
-            <h4>Equipe TBD</h4>
-            <ul>
-              <li>Cleber</li>
-              <li>Curado</li>
-              <li>Pedro (O Tio)</li>
-            </ul>
+        <!-- 2 -->
+        <div class="result-card silver">
+          <div class="result-position">
+            🥈 Vice-Campeão
           </div>
 
-          <div class="team-card">
-            <h4>Bsb Digital</h4>
-            <ul>
-              <li>Leonardo</li>
-              <li>Rafael</li>
-              <li>Reginaldo</li>
-              <li>Sandro Japa</li>
-            </ul>
+          <div class="result-team">
+            Blue Racing
           </div>
 
-          <div class="team-card">
-            <h4>Monster Slot</h4>
-            <ul>
-              <li>Herick</li>
-              <li>Rafael</li>
-              <li>Wascheck</li>
-            </ul>
+          <div class="result-laps">
+            1432
           </div>
 
-          <div class="team-card">
-            <h4>Zap X</h4>
-            <ul>
-              <li>Emerson</li>
-              <li>Fabrício</li>
-              <li>Wilton</li>
-            </ul>
+          <div class="result-laps-label">
+            Voltas Completadas
           </div>
+
+          <ul class="result-drivers">
+            <li>Arthur Passaglia</li>
+            <li>Andre PX</li>
+            <li>Ricardo C.</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="result-card bronze">
+          <div class="result-position">
+            🥉 3º Lugar
+          </div>
+
+          <div class="result-team">
+            Fast Cat
+          </div>
+
+          <div class="result-laps">
+            1426
+          </div>
+
+          <div class="result-laps-label">
+            Voltas Completadas
+          </div>
+
+          <ul class="result-drivers">
+            <li>Renato Frangão</li>
+            <li>Benigno</li>
+            <li>Taddei</li>
+            <li>Serjão</li>
+          </ul>
         </div>
 
       </div>
+
+      <div class="results-note">
+        Classificação oficial após 6 horas de prova • Goiânia • Maio 2026
+      </div>
+
     </section>
 
   </main>
